@@ -15,9 +15,16 @@
 <iframe src="plot1.html" width="800" height="500"></iframe>
 
 <p>
-This plot shows Bigfoot sightings aggregated by state using a bar chart. The x-axis encodes state as a nominal variable, while the y-axis encodes the count of sightings as a quantitative measure. I grouped the dataset in Python using a pandas groupby operation to compute total sightings per state before visualizing it in Altair. Color encoding is applied to distinguish states visually, using a categorical color scheme to make comparisons easier across regions.
-</p>
+This plot shows Bigfoot sightings aggregated by state using a bar plot. The x-axis encodes state as a nominal variable, while the y-axis encodes the count of sightings as a quantitative measure. In addition to this, color is used to encode count of sightings as a quantitative measure as well.
 
+In particular, I used viridis to help communicate the amount of Bigfoot sightings in each state. If a state has its bar colored in a brighter yellow, that means more Bigfoot sightings have occurred. If a state has its bar colored in a darker shade (blue), that means fewer Bigfoot sightings have occurred. I used viridis in particular as it is a great fit for ordered/quantitative data and can be seen well by colorblind people.
+
+Each bar represents a state (on the x-axis, with state as a nominal variable), with the height of the bar showing the amount of Bigfoot sightings in that state. A bar plot is used as this makes it easy to compare different states using the height of their bars. Furthermore, the bars/states are arranged such that the states with the most Bigfoot sightings are to the left of the bar plot and bars/states with the least sightings are to the right.
+
+Even though the bars are sufficient to compare and contrast different states, I decided to add color, with brightness/darkness corresponding to the amount of sightings, to make the bar plot more visually appealing. This also gives viewers another way to digest the information presented in the plot. It is important to note that using color is NOT REQUIRED for presenting the data as you can use the X and Y axis to sufficiently display the data without a color encoding. However, I do think that it is important to add color as an encoding as it makes the information easier to read (especially when comparing shorter bars). 
+
+The raw dataset was transformed by grouping sightings by state and computing the total count per state. I also arranged the bars by the count per state I calculated. This was done specifically as then comparisons can be made for short bars (think comparing Nebraska and Wyoming). If not arranged, a user may not be able to tell that Nebraska had slightly higher amount of total sightings than Wyoming. However, with this indexing style, this is resolved. In addition to this, before even making the bar plot or thinking about the various plots I wanted to make, I cleaned the data by dropping columns which have textual information such as observed, location_details, and summary. These columns were messy (a lot of blank entries) and had mostly text information which was purely qualitative, which I would have a hard time displaying in a plot. I also dropped rows of data where state was N/A, as I wanted this bar plot to reflect information regarding states where sightings happened. In addition to this, I dropped columns where latitude and longitude were N/A and converted those columns to numerical informations. This was not used in my analysis but was kept for an idea I had for analysing sightings by locaiton. I decided to ditch using latitude and longitude in favor of State as States are more easily identifable to average readers. In addition to this, coversion of date data into datetime data and parsing the year from this data was used for my second plot. 
+</p>
 ---
 
 <h2>Plot 2: Sightings Over Time</h2>
@@ -25,7 +32,6 @@ This plot shows Bigfoot sightings aggregated by state using a bar chart. The x-a
 <iframe src="plot2.html" width="800" height="500"></iframe>
 
 <p>
-This visualization shows how sightings change over time across different states. The x-axis represents year, and the y-axis represents number of sightings. The color encoding differentiates states, allowing comparison of trends across regions. The dataset was transformed in Python by extracting year from the date column and grouping by year and state. Interactivity is added through selection filtering, allowing users to click on states to highlight or fade other lines, making patterns easier to compare.
-</p>
+This visualization shows how sightings change over time across different states. The x-axis represents year, and the y-axis represents number of sightings. The color encoding differentiates states, allowing comparison of trends across regions. The dataset was transformed in Python by extracting year from the date column and grouping by year and state. 
 
 </body>
