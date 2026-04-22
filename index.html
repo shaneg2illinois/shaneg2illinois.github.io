@@ -1,10 +1,31 @@
-<!doctype html>
-<html>
-  <head>
-    <title>This is the title of the webpage!</title>
-  </head>
-  <body>
-    <!-- this is just a comment for IS445 Fall 2024 BCU/BCG -->
-    <p>This is an example paragraph for Fa2024-ID27810. Anything in the <strong>body</strong> tag will appear on the page, just like this <strong>p</strong> tag and its contents.</p>
-  </body>
-</html>
+<body>
+
+<h1>Bigfoot Sightings Visualization Project</h1>
+
+<!-- DATA + NOTEBOOK LINKS -->
+<p>
+  <a href="https://raw.githubusercontent.com/UIUC-iSchool-DataViz/is445_data/main/bfro_reports_fall2022.csv">The Data</a> |
+  <a href="https://github.com/shaneg2illinois/shaneg2illinois.github.io/blob/main/Workbook.ipynb">The Analysis (Notebook)</a>
+</p>
+
+---
+
+<h2>Plot 1: Sightings by State</h2>
+
+<iframe src="plot1.html" width="800" height="500"></iframe>
+
+<p>
+This plot shows Bigfoot sightings aggregated by state using a bar chart. The x-axis encodes state as a nominal variable, while the y-axis encodes the count of sightings as a quantitative measure. I grouped the dataset in Python using a pandas groupby operation to compute total sightings per state before visualizing it in Altair. Color encoding is applied to distinguish states visually, using a categorical color scheme to make comparisons easier across regions.
+</p>
+
+---
+
+<h2>Plot 2: Sightings Over Time</h2>
+
+<iframe src="plot2.html" width="800" height="500"></iframe>
+
+<p>
+This visualization shows how sightings change over time across different states. The x-axis represents year, and the y-axis represents number of sightings. The color encoding differentiates states, allowing comparison of trends across regions. The dataset was transformed in Python by extracting year from the date column and grouping by year and state. Interactivity is added through selection filtering, allowing users to click on states to highlight or fade other lines, making patterns easier to compare.
+</p>
+
+</body>
