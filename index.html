@@ -16,17 +16,16 @@
 
 <p>
 This plot shows Bigfoot sightings aggregated by state using a bar plot. The x-axis encodes state as a nominal variable, while the y-axis encodes the count of sightings as a quantitative measure. In addition to this, color is used to encode count of sightings as a quantitative measure as well.
-<p>
-  
+</p> 
 <p>  
 In particular, I used viridis to help communicate the amount of Bigfoot sightings in each state. If a state has its bar colored in a brighter yellow, that means more Bigfoot sightings have occurred. If a state has its bar colored in a darker shade (blue), that means fewer Bigfoot sightings have occurred. I used viridis in particular as it is a great fit for ordered/quantitative data and can be seen well by colorblind people.
-<p>
+</p>
 <p>
 Each bar represents a state (on the x-axis, with state as a nominal variable), with the height of the bar showing the amount of Bigfoot sightings in that state. A bar plot is used as this makes it easy to compare different states using the height of their bars. Furthermore, the bars/states are arranged such that the states with the most Bigfoot sightings are to the left of the bar plot and bars/states with the least sightings are to the right.
-<p>
+</p>
 <p>
 Even though the bars are sufficient to compare and contrast different states, I decided to add color, with brightness/darkness corresponding to the amount of sightings, to make the bar plot more visually appealing. This also gives viewers another way to digest the information presented in the plot. It is important to note that using color is NOT REQUIRED for presenting the data as you can use the X and Y axis to sufficiently display the data without a color encoding. However, I do think that it is important to add color as an encoding as it makes the information easier to read (especially when comparing shorter bars). 
-<p>
+</p>
 <p>
 The raw dataset was transformed by grouping sightings by state and computing the total count per state. I also arranged the bars by the count per state I calculated. This was done specifically as then comparisons can be made for short bars (think comparing Nebraska and Wyoming). If not arranged, a user may not be able to tell that Nebraska had slightly higher amount of total sightings than Wyoming. However, with this indexing style, this is resolved. In addition to this, before even making the bar plot or thinking about the various plots I wanted to make, I cleaned the data by dropping columns which have textual information such as observed, location_details, and summary. These columns were messy (a lot of blank entries) and had mostly text information which was purely qualitative, which I would have a hard time displaying in a plot. I also dropped rows of data where state was N/A, as I wanted this bar plot to reflect information regarding states where sightings happened. In addition to this, I dropped columns where latitude and longitude were N/A and converted those columns to numerical informations. This was not used in my analysis but was kept for an idea I had for analysing sightings by locaiton. I decided to ditch using latitude and longitude in favor of State as States are more easily identifable to average readers. In addition to this, coversion of date data into datetime data and parsing the year from this data was used for my second plot. 
 </p>
@@ -37,6 +36,27 @@ The raw dataset was transformed by grouping sightings by state and computing the
 <iframe src="plot2.html" width="800" height="500"></iframe>
 
 <p>
-This visualization shows how sightings change over time across different states. The x-axis represents year, and the y-axis represents number of sightings. The color encoding differentiates states, allowing comparison of trends across regions. The dataset was transformed in Python by extracting year from the date column and grouping by year and state. 
+This visualization shows how sightings change over time across different states. The x-axis represents year as a quantitative variable, and the y-axis represents number of sightings as a quantitative variable. The color encoding differentiates seasons, allowing comparison of trends across seasons.
+</p>
+
+<p>
+I used a line graph for this visualization because it helps the viewer compare trends between seasons across multiple years. This is useful as viewers can see general trends (like change in sightings across all seasons in a year) or compare trends across seasons. Using the color encoding for season is really important as it helps the viewer identify which season each line in the plot corresponds to.
+</p>
+
+<p>
+Each line represents a season (we use color to encode this), with the height of the line at a point (y-axis) referring to the number of Bigfoot sightings and the x-axis of the line at a point referring to the year for which the recording was made. A line plot was used as it is easy to compare different seasons within and across years. As mentioned before, we use color to encode season. This is very important to draw attention to as we need to use a color encoding for season because the x- and y-axes alone are insufficient to represent all relevant dimensions of the data.
+</p>
+
+<p>
+As mentioned briefly above, color was used to differentiate the different seasons. This is important as mentioned previously because using just the x- and y-axis is not enough to represent all relevant dimensions of the data. However, unlike plot 1, which has each color actually mean something (dark/light color on a scale for count), this time color is used as a categorical color scale. Each color doesn’t have a meaning aside from it being tied to a season and independent from all other colors. Of course, this is really important and essential to displaying all relevant dimensions of the data, but it is different from a colormap where it maps continuous data (quantitative) to colors.
+</p>
+
+<p>
+The raw dataset was transformed by grouping observations by year and season and computing the number of sightings in each group. In addition to this, before even making the bar plot or thinking about the various plots I wanted to make, I cleaned the data by dropping columns which have textual information such as observed, location_details, and summary. These columns were messy (a lot of blank entries) and had mostly text information which was purely qualitative, which I would have a hard time displaying in a plot. I also took away any row which did not have information for season (N/A). This is because I wanted to have each sighting of Bigfoot be tied to a season and without this data, that would be hard. In addition to this, conversion of date data into datetime data and parsing the year from this data was used for my x-axis so it is very important. As mentioned previously, transformation regarding longitude and latitude were also done for my first plot (however I did not end up using longitude and latitude as covered above).
+</p>
+
+<p>
+For my interactivity feature, I decided to add a clickable legend. If the user clicks a season on the season legend, the season appears to be highlighted as other seasons get dimmed (their opacity is changed). I believe that this interactivity feature is very important as it helps better compare and contrast data. It also makes the lines more readable at points where two lines may be very close or intersecting.
+</p>
 
 </body>
