@@ -8,11 +8,20 @@
   <a href="https://github.com/shaneg2illinois/shaneg2illinois.github.io/blob/main/Workbook.ipynb">The Analysis (Notebook)</a>
 </p>
 
+<!-- Vega Libraries -->
+<script src="https://cdn.jsdelivr.net/npm/vega@5"></script>
+<script src="https://cdn.jsdelivr.net/npm/vega-lite@5"></script>
+<script src="https://cdn.jsdelivr.net/npm/vega-embed@6"></script>
+
 ---
 
 <h2>Plot 1: Sightings by State</h2>
 
-<iframe src="plot1.html" width="800" height="500"></iframe>
+<div id="plot1"></div>
+
+<script>
+vegaEmbed('#plot1', 'plot1.json', {actions: false});
+</script>
 
 <p>
 This plot shows Bigfoot sightings aggregated by state using a bar plot. The x-axis encodes state as a nominal variable, while the y-axis encodes the count of sightings as a quantitative measure. In addition to this, color is used to encode count of sightings as a quantitative measure as well.
@@ -33,7 +42,11 @@ The raw dataset was transformed by grouping sightings by state and computing the
 
 <h2>Plot 2: Sightings Over Time</h2>
 
-<iframe src="plot2.html" width="800" height="500"></iframe>
+<div id="plot2"></div>
+
+<script>
+vegaEmbed('#plot2', 'plot2.json', {actions: false});
+</script>
 
 <p>
 This visualization shows how sightings change over time across different states. The x-axis represents year as a quantitative variable, and the y-axis represents number of sightings as a quantitative variable. The color encoding differentiates seasons, allowing comparison of trends across seasons.
